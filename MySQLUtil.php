@@ -38,7 +38,7 @@ class MySQLUtil
                 die("mysql connect error" . mysqli_error(self::$connect));
             }
             mysqli_query(self::$connect, "set names UTF-8");
-            return self::$connect;
         }
+        return self::$connect;
     }
 }
