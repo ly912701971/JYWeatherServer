@@ -21,7 +21,7 @@ $link = MySQLUtil::getInstance()->connect();
 $row = mysqli_query($link, "select * from `weather` where `city`='$city'");
 if (mysqli_num_rows($row) < 1) {// 查无数据，则请求数据并插入数据库
     $jsonData = NetworkInterface::requestWeather($city);
-    if ($status = JsonUtil::getStatus($jsonData) !== "ok") {
+    if (($status = JsonUtil::getStatus($jsonData)) !== "ok") {
         Response::show($status, $format);
         exit(0);
     }
