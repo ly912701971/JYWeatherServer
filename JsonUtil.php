@@ -12,13 +12,23 @@ class JsonUtil
         return ceil(strtotime(date("Y-m-d H:i:s")) - strtotime($updateTime)) > 60 * 60;
     }
 
+    public static function getLocation($jsonData)
+    {
+        return self::decode($jsonData)->basic->location;
+    }
+
     public static function getUpdateTime($jsonData)
     {
-        return json_decode($jsonData)->HeWeather6[0]->update->loc;
+        return self::decode($jsonData)->update->loc;
     }
 
     public static function getStatus($jsonData)
     {
-        return json_decode($jsonData)->HeWeather6[0]->status;
+        return self::decode($jsonData)->status;
+    }
+
+    private static function decode($jsonData)
+    {
+        return json_decode($jsonData)->HeWeather6[0];
     }
 }
