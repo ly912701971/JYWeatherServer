@@ -7,8 +7,6 @@ require_once("MySQLUtil.php");
  * Date: 2019/5/26
  * Time: 14:59
  */
-$postBody = file_get_contents("php://input");
-
 $openId = $_POST["openId"];
 $liveTime = $_POST["liveTime"];
 $liveText = $_POST["liveText"];
@@ -62,7 +60,7 @@ $liveUrl = substr($path, 1);
 $link = MySQLUtil::getInstance()->connect();
 mysqli_query(
     $link,
-    "insert into `live`(user_id,live_time,live_text,location,live_url)" .
+    "insert into `live`(`user_id`,`live_time`,`live_text`,`location`,`live_url`)" .
     " values('$openId','$liveTime','$liveText','$location','$liveUrl')"
 );
 echo "Success";
