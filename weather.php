@@ -31,7 +31,7 @@ if (mysqli_num_rows($row) < 1) {// 查无数据，则请求数据并插入数据
 } else {
     $obj = $row->fetch_object();
     if (JsonUtil::timeJudge($obj->update_time)) {
-        // 时间超过1小时，重新请求数据并更新数据库
+        // 时间超过30分钟，重新请求数据并更新数据库
         $jsonData = NetworkInterface::requestWeather($city);
         if ($status = JsonUtil::getStatus($jsonData) !== "ok") {
             Response::show($status, $format);

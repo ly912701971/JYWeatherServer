@@ -9,7 +9,7 @@ class JsonUtil
     public static function timeJudge($updateTime)
     {
         date_default_timezone_set('PRC');// 设置时区为中国
-        return ceil(strtotime(date("Y-m-d H:i:s")) - strtotime($updateTime)) > 60 * 60;
+        return ceil(strtotime(date("Y-m-d H:i:s")) - strtotime($updateTime)) > 30 * 60;
     }
 
     public static function getLocation($jsonData)
