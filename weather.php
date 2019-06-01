@@ -43,7 +43,6 @@ if (mysqli_num_rows($row) < 1) {// 查无数据，则请求数据并插入数据
         $jsonData = $obj->weather_data;
     }
 }
-echo $jsonData;
 Response::show(JsonUtil::getStatus($jsonData), $format, $jsonData);
 FileCache::cacheData($city, $jsonData);
 mysqli_free_result($row);
